@@ -98,7 +98,7 @@ function fillRandomWords() {
 
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
-  ui.createMenu('Password Generator')
+  ui.createAddonMenu()
       .addItem('Create passwords from words', 'fillRandomWords')
       // .addItem('Create passwords from symbols', 'fillRandomSymbols')
       .addToUi();
