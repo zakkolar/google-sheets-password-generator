@@ -34,10 +34,16 @@ return base+number;
 function generatePassword() {
   var activeSheet = SpreadsheetApp.getActiveSheet();
   var selection = activeSheet.getActiveRange();
+  var used = [];
   for(var i=0; i<selection.getNumRows(); i++){
     for(var j=0; j<selection.getNumColumns(); j++){
-    
-    selection.getCell(i+1, j+1).setValue(getPassword())
+      var password;
+      do{
+        password = getPassword();
+      }
+      while(used.indexOf(password)>-1);
+      used.push(password);
+    selection.getCell(i+1, j+1).setValue(password)
     }
   }
   
